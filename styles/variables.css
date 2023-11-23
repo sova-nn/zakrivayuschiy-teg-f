@@ -1,5 +1,12 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
-    --inter: 'Inter';
-    --press-start-p2: 'PressStart2P';
+    --inter: 'Inter', sans-serif;
+    --press-start-p2: 'PressStart2P', sans-serif;
+
+    --main-text-weith: 400;
+    --h-weight: 700;
+
+    --main-color: #fff;
+    --accent-color: #000;
+    --like-color: red;
 }
