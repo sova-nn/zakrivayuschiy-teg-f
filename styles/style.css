@@ -22,6 +22,7 @@
   font-variation-settings: "wght" var(--main-text-weith);
   color: var(--accent-color);
 
+  /* работает корректно в соответствии со спекой https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector */
   & > * {
     max-width: min(100%, 700px);
     margin-left: auto;
@@ -45,7 +46,7 @@
 .header__title-tag {
   font-variation-settings: "wght" var(--h-weight);
   font-family: var(--press-start-p2);
-  font-size: 65px;
+  font-size: clamp(49px, 14vw, 65px);
   font-style: normal;
   font-weight: var(--main-text-weith);
   line-height: normal;
@@ -57,7 +58,7 @@
 .header__title-text {
   padding-top: 20px;
   font-family: var(--press-start-p2);
-  font-size: 23px;
+  font-size: clamp(14px, 4vw, 23px);
   font-style: normal;
   font-weight: var(--main-text-weith);
   line-height: normal;
@@ -72,23 +73,28 @@
 .theme-menu__list {
   display: flex;
   flex-direction: column;
+  row-gap: 14px;
   align-items: center;
 }
 
 .theme-menu__button {
   border: none;
-  font-family: var(--press-start-p2);
+  position: relative;
   text-transform: uppercase;
   background-color: transparent;
 
+  font-family: var(--press-start-p2);
   font-size: 14px;
   font-style: normal;
   font-weight: var(--main-text-weith);
   line-height: normal;
+
+  transition: transform 0.3s ease;
 }
 
 .theme-menu__button:hover {
   cursor: pointer;
+  opacity: 0.6;
 }
 
 .theme-menu__button:disabled {
@@ -169,6 +175,12 @@
 
 .article-image-container {
   position: relative;
+  border-top: 2px solid var(--accent-color, #000);
+  border-bottom: 2px solid var(--accent-color, #000);
+}
+
+.article-image-container > img {
+  width: 100%;
 }
 
 .article__description {
@@ -186,29 +198,23 @@
   line-height: 21px; /* 116.667% */
 }
 
-.article__description-text > img {
-  width: 200px;
-  float: left;
-  margin-right: 20px;
-}
-
 .article-label {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 23px;
+  right: 11px;
   font-family: var(--press-start-p2);
-  font-size: 12.7px;
+  font-size: 14px;
   mix-blend-mode: hard-light;
   text-transform: uppercase;
-  color: #fff;
-  text-shadow: -1px 0 aqua, 0 1px aqua, 1px 0 aqua, 0 -1px aqua;
+  color: var(--accent-color);
+  text-shadow: var(--text-shadow);
   opacity: 0.5;
 }
 
 @supports ((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
   .article-label {
-    -webkit-text-stroke: 1px #fff;
-    text-stroke: 1px #fff;
+    -webkit-text-stroke: 1px var(--main-color, #fff);
+    text-stroke: 1px var(--main-color, #fff);
     text-shadow: none;
   }
 }
@@ -259,7 +265,7 @@
 .card__save-button {
   min-width: 335px;
   min-height: 51px;
-  background-color: #fff;
+  background-color: var(--main-color);
   border: 2px solid var(--accent-color, #000);
   display: flex;
   justify-content: center;
@@ -271,6 +277,10 @@
   font-style: normal;
   font-weight: var(--main-text-weith);
   line-height: 90%; /* 12.6px */
+}
+
+.card__save-button:focus {
+  box-shadow: 2px 2px 0px 0px var(--accent-color);
 }
 
 /* Like */
@@ -296,11 +306,10 @@
   border: 2px solid var(--accent-color, #000);
   padding: 9px 17px;
   position: relative;
-  background-color: #fff;
+  background-color: var(--main-color);
 
   display: flex;
   min-width: 130px;
-  min-height: 38px;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -316,7 +325,6 @@
   position: relative;
   z-index: 2;
   color: var(--accent-color);
-  mix-blend-mode: difference;
 }
 
 .animate::after {
@@ -339,6 +347,12 @@
 
 .card__like-button {
   background-color: transparent;
+  min-height: 38px;
+}
+
+.card__icon-button:hover,
+.card__like-button:hover {
+  cursor: pointer;
 }
 
 .card__like-button:focus {
@@ -354,6 +368,10 @@
   padding: 32px;
 
   flex-direction: column;
+  border-color: var(--accent-color, #000);
+  background-color: var(--main-color, #fff);
+  color: var(--accent-color, #000);
+
   font-family: var(--press-start-p2);
   font-size: 14px;
   font-style: normal;
@@ -403,9 +421,13 @@
   cursor: pointer;
 }
 
+.dialog_button:focus {
+  box-shadow: 2px 2px 0px 0px var(--accent-color);
+}
+
 /* 375px */
 
-@media (width <= 375px) {
+@media (width <= 700px) {
   .header__title-tag {
     font-size: 49px;
   }
@@ -426,5 +448,9 @@
   .card__save-button > svg {
     width: 28px;
     height: 28px;
+  }
+
+  .dialog {
+    max-width: 341px;
   }
 }
