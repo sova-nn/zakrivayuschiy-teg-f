@@ -10,6 +10,7 @@
   --accent-color: #000;
   --like-color: red;
   --shadow-color: aqua;
+  --animate-color: #fff;
 
   --backgroung: repeating-linear-gradient(
         90deg,

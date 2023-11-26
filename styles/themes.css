@@ -10,6 +10,8 @@
   --main-color: #fff;
   --accent-color: #000;
   --like-color: red;
+  --animate-color: #fff;
+
   --backgroung: repeating-linear-gradient(
       90deg,
       #d3d3d3 0 2px,
@@ -25,6 +27,8 @@
   --main-color: #000;
   --accent-color: #00cc14;
   --like-color: red;
+  --animate-color: #00cc14;
+
   --backgroung: repeating-linear-gradient(
       90deg,
       black 0 2px,
@@ -41,6 +45,8 @@
     --main-color: #000;
     --accent-color: #00cc14;
     --like-color: red;
+    --animate-color: #00cc14;
+
     --backgroung: repeating-linear-gradient(
         90deg,
         black 0 2px,
