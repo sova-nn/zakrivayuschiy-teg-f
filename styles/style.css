@@ -46,7 +46,7 @@
 .header__title-tag {
   font-variation-settings: "wght" var(--h-weight);
   font-family: var(--press-start-p2);
-  font-size: clamp(49px, 14vw, 65px);
+  font-size: clamp(49px, 12vw, 65px);
   font-style: normal;
   font-weight: var(--main-text-weith);
   line-height: normal;
@@ -58,7 +58,7 @@
 .header__title-text {
   padding-top: 20px;
   font-family: var(--press-start-p2);
-  font-size: clamp(14px, 4vw, 23px);
+  font-size: clamp(14px, 3vw, 23px);
   font-style: normal;
   font-weight: var(--main-text-weith);
   line-height: normal;
@@ -260,6 +260,8 @@
 .saveSvg {
   width: 21px;
   height: 21px;
+  fill: var(--accent-color);
+  mix-blend-mode: difference;
 }
 
 .card__save-button {
@@ -288,6 +290,7 @@
 .like-wrapper {
   display: flex;
   justify-content: end;
+  align-items: center;
 }
 
 .card__icon-button {
@@ -399,6 +402,8 @@
   width: 39px;
   height: 39px;
   flex-shrink: 0;
+  fill: var(--accent-color);
+  mix-blend-mode: difference;
 }
 
 .form_dialog {
@@ -429,6 +434,18 @@
 /* 375px */
 
 @media (width <= 700px) {
+  .main {
+    margin-top: 102px;
+  }
+
+  .header {
+    padding: 120px 14px 0 14px;
+  }
+
+  .header__theme-menu {
+    padding-top: 22px;
+  }
+
   .article-image-container > img {
     width: 100%;
   }
@@ -436,6 +453,7 @@
   .card__save-button {
     flex-direction: column;
     row-gap: 8px;
+    padding: 20px;
   }
 
   .card__save-button > svg {
